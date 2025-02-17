@@ -28,7 +28,7 @@
           alert('Please enter a stock symbol!');
           return;
         }
-        let apiURL = 'https://stock-prediction-gypu.onrender.com/plot_base64?symbol='+symbol;
+        let apiURL = 'https://stock-prediction-gypu.onrender.com/plot?stock_symbol='+symbol;
         try{
           let response = await fetch(apiURL);
           let data = await response.json();
