@@ -32,10 +32,10 @@
         try{
           let response = await fetch(apiURL);
           let data = await response.json();
-          if(!data.image_base64){
+          if(!data.image){
             throw new Error("image_base not found in API response");
           }
-          document.getElementById('stockChart').src='data:image/png;base64,${data.image_base64}';
+          document.getElementById('stockChart').src='data:image/png;base64,${data.image}';
         }
         catch(error){
           console.error("Error fetching stock prediction:",error);
