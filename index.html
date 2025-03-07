@@ -17,7 +17,7 @@
       </form>
       <div id='result'>
         <h2>Prediction Result</h2>
-        <img id='stockChart' src='' alt='Stock Prediction Graph'>
+        <img id='stockChart' src='' alt='Stock Prediction Graph' style='display:none;'>
       </div>
     </div>
     <script>
@@ -36,6 +36,7 @@
           if(!data.image){
             throw new Error("image_base not found in API response");
           }
+          console.log("Base64 Image data:",data.image);
           let imgElement = document.getElementById('stockChart');
           if(imgElement){
             imgElement.src=data.image;
