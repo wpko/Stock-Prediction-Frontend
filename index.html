@@ -33,13 +33,13 @@
           let response = await fetch(apiURL);
           let data = await response.json();
           console.log("API Response:",data);
-          if(!data.image){
+          if(!data || !data.image){
             throw new Error("image_base not found in API response");
           }
           console.log("Base64 Image data:",data.image);
           let imgElement = document.getElementById('stockChart');
           if(imgElement){
-            imgElement.src=data.image;
+            imgElement.src=data.image.trim();
             imgElement.style.display="block";
           }
           else{
