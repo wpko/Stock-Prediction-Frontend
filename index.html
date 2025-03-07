@@ -28,15 +28,17 @@
           alert('Please enter a stock symbol!');
           return;
         }
-        let apiURL = 'https://stock-prediction-gypu.onrender.com/plot?stock_symbol='+symbol;
+        let apiURL = `https://stock-prediction-gypu.onrender.com/plot?stock_symbol=${symbol}`;
         try{
           let response = await fetch(apiURL);
           let data = await response.json();
+          console.log("API Response:",data);
           if(!data.image){
             throw new Error("image_base not found in API response");
           }
-          let base64Data = data.image.replace(/^data:image\/png;base64,/, "");
-          document.getElementById('stockChart').src=`data:image/png;base64,${base64Data}`;
+          let imgElement = document.getElementById('stockChart');
+          imgElement.src=data.image;
+          imgElement.style.display = "block";
         }
         catch(error){
           console.error("Error fetching stock prediction:",error);
