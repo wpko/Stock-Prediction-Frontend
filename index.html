@@ -30,7 +30,13 @@
         }
         let apiURL = `https://stock-prediction-gypu.onrender.com/plot?stock_symbol=${symbol}`;
         try{
-          let response = await fetch(apiURL);
+          let response = await fetch(apiURL,{
+            method: "GET",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
           let data = await response.json();
           console.log("API Response:",data);
           if(!data || !data.image){
