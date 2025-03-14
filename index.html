@@ -31,12 +31,11 @@
         let apiURL = `https://stock-prediction-gypu.onrender.com/plot?stock_symbol=${symbol}`;
         try{
           let response = await fetch(apiURL,{
-            method: "POST",
+            method: "GET",
             mode: "cors",
             headers: {
               "Content-Type": "application/json"
-            },
-            body: JSON.stringify({stock_symbol: symbol})
+            }
           });
           let data = await response.json();
           console.log("API Response:",data);
