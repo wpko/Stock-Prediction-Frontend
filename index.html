@@ -35,7 +35,7 @@
             mode: "cors",
             headers: {
               "Content-Type": "application/json"
-            }
+            },
             body: JSON.stringify({stock_symbol: symbol})
           });
           let data = await response.json();
