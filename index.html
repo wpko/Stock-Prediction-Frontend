@@ -17,7 +17,7 @@
       </form>
       <div id='result'>
         <h2>Prediction Result</h2>
-        <img id='stockChart' src='' alt='Stock Prediction Graph' style='display:none;'>
+        <img id='stockChart' src='' alt='Stock Prediction Graph' style='display:none; width: 500px;'>
       </div>
     </div>
     <script>
@@ -29,13 +29,15 @@
           return;
         }
         let apiURL = `https://stock-prediction-gypu.onrender.com/plot?stock_symbol=${symbol}`;
+        let requestData = {stock_symbol: symbol};
         try{
           let response = await fetch(apiURL,{
-            method: "GET",
+            method: "POST",
             mode: "cors",
             headers: {
               "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(requestData)
           });
           let data = await response.json();
           console.log("API Response:",data);
